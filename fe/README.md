@@ -1,7 +1,7 @@
-# Blackbear
+# hackathon-fe
 
-**Welcome to the Blackbear project!**  
-We aim to be a learning management program that is easier to use than Google Classroom and more functional than Brightspace, all while offering an easy, responsive, and fun experience for students and faculty alike.  
+**Welcome to our Frontend!**  
+this should be a description of the project (its frontend).
 
 ## Environment Setup
 

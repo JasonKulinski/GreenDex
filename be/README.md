@@ -1,14 +1,12 @@
-# blackbear-be
+# hackathon-be
 
-**Welcome to the Blackbear Backend!**  
-This is the backend for our Blackbear application. We're using the following stack:
+**Welcome to our Backend!**  
+This is the backend for our application. We're using the following stack:
 
 1. React
 1. Express.js
 1. Node.js
 1. Elasticsearch
-
-This project encompasses the bottom three items of the stack. The React project is covered in the `blackbear-fe` repo.
 
 ## Environment Setup
 
