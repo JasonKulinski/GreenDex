@@ -1,0 +1,32 @@
+{
+    "name": "hackathon-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node src/server.js",
+        "es": "run-script-os",
+        "es:darwin:linux": "ES_PATH_CONF=es-config/config ./elasticsearch/bin/elasticsearch",
+        "es:win32": "PowerShell -NoProfile -ExecutionPolicy Bypass -Command \"$env:ES_PATH_CONF = 'es-config/config'; .\\elasticsearch\\bin\\elasticsearch.bat\"",
+        "setup-es": "run-script-os",
+        "setup-es:darwin:linux": "./scripts/linux-setup-elasticsearch.sh",
+        "setup-es:win32": ".\\scripts\\windows-setup-elasticsearch.ps1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@elastic/elasticsearch": "^8.6.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "http": "^0.0.1-security",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.15.5",
+        "run-script-os": "^1.1.6"
+    }
+}
