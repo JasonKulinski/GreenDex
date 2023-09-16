@@ -17,7 +17,7 @@ const Home: React.FC = () => {
             <IonHeader >
                 <IonToolbar className = 'header' color='success'>
                     <div id="imgheader">
-                    <img height="40" src ="logotest.png"/>
+                    <img height="40" src ="basket.png"/>
                     <IonTitle >Basket</IonTitle>
                     </div>
                 </IonToolbar>
