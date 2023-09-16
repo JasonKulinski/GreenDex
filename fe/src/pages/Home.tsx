@@ -15,8 +15,8 @@ const Home: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Blank</IonTitle>
+                <IonToolbar className = 'header' color='success'>
+                    <IonTitle>AppName</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
