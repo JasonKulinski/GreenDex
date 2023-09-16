@@ -2,6 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, Ion
 import { add } from 'ionicons/icons'
 import { doGet } from '../Utils'
 
+
 import ExploreContainer from '../components/ExploreContainer'
 import './Home.css';
 
@@ -17,6 +18,7 @@ const Home: React.FC = () => {
             <IonHeader>
                 <IonToolbar className = 'header' color='success'>
                     <IonTitle>AppName</IonTitle>
+                   
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>

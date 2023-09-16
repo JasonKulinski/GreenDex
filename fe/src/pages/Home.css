@@ -1,3 +1,8 @@
+ion-toolbar{
+   --display: flex;
+  
+}
+
 
 .poopie {
     --background: #FFA07A;
