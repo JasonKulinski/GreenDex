@@ -1,24 +1,27 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton} from '@ionic/react'
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton } from '@ionic/react'
 import { add, home, search, camera, person } from 'ionicons/icons'
-import { doGet } from '../Utils'
+import { doGet, doPost } from '../Utils'
 
 import ExploreContainer from '../components/ExploreContainer'
-import './Home.css';
+import './Home.css'
 
 const Home: React.FC = () => {
 
     async function test() {
-        let result = await doGet("test")
-        alert(result.data.message)
+        let result = await doPost('search', {
+            search: 'adidas'
+        })
+        // let result = await doGet('test')
+        console.log(result.data)
     }
 
     return (
         <IonPage>
             <IonHeader >
-                <IonToolbar className = 'header' color='success'>
+                <IonToolbar className='header' color='success'>
                     <div id="imgheader">
-                    <img height="40" src ="basket.png"/>
-                    <IonTitle >Basket</IonTitle>
+                        <img height="40" src="basket.png" />
+                        <IonTitle onClick={test}>Basket</IonTitle>
                     </div>
                 </IonToolbar>
             </IonHeader>
@@ -31,39 +34,39 @@ const Home: React.FC = () => {
                 <div id="featuredcompanies">
                     <h1>Featured Companies</h1>
                 </div>
-                
+
                 <IonCard className='cardDesign'>
                     <button ion-item>
-                    <img src="amazonlogo.png"/>
-                    <IonCardHeader>
-                        <div className='card-text'>
-                            <div className='card-text-left'>
-                                <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
-                                <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
+                        <img src="amazonlogo.png" />
+                        <IonCardHeader>
+                            <div className='card-text'>
+                                <div className='card-text-left'>
+                                    <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
+                                    <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
+                                </div>
+                                <div className='card-text-right'>
+                                    <IonCardSubtitle>Grade:A</IonCardSubtitle>
+                                </div>
                             </div>
-                            <div className='card-text-right'>
-                                <IonCardSubtitle>Grade:A</IonCardSubtitle>
-                            </div>
-                        </div>
-                    </IonCardHeader>
+                        </IonCardHeader>
                     </button>
                 </IonCard>
 
 
                 <IonCard>
                     <button ion-item>
-                    <img className='companylogo' src="amazonlogo.png"/>
-                    <IonCardHeader>
-                        <div className='card-text'>
-                            <div className='card-text-left'>
-                                <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
-                                <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
+                        <img className='companylogo' src="amazonlogo.png" />
+                        <IonCardHeader>
+                            <div className='card-text'>
+                                <div className='card-text-left'>
+                                    <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
+                                    <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
+                                </div>
+                                <div className='card-text-right'>
+                                    <IonCardSubtitle>A</IonCardSubtitle>
+                                </div>
                             </div>
-                            <div className='card-text-right'>
-                                <IonCardSubtitle>A</IonCardSubtitle>
-                            </div>
-                        </div>
-                    </IonCardHeader>
+                        </IonCardHeader>
                     </button>
                 </IonCard>
 
