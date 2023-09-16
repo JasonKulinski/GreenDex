@@ -34,9 +34,10 @@ server.listen(Number(process.env.PORT), () => {
     console.log(`listening on *:${process.env.PORT}`)
 })
 
-app.get('/api/test', async (req, res) => {
+app.post('/api/company', async (req, res) => {
     try {
-        return res.status(200).send({ message: 'Hello world!' })
+        const response = await Data.read(req.body.company)
+        return res.status(200).send(response)
     }
     catch (e) {
         res.status(400).send({ message: e })
