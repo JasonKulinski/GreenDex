@@ -18,7 +18,7 @@ const Home: React.FC = () => {
                 <IonToolbar className = 'header' color='success'>
                     <div id="imgHeader">
                     <img height="40" src ="logotest.png"/>
-                    <IonTitle >AppName</IonTitle>
+                    <IonTitle >Basket</IonTitle>
                     </div>
                 </IonToolbar>
             </IonHeader>
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
                 <div id="missionHeader">
                 <h1>Our Mission</h1>
                 <hr/>
-                <p>The goal of this app is to blah blah</p>
+                <p>Global warming has been rising, drifting into drastic changes affecting our society. Every step counts in stopping the rise of climate change, which is why we have created an app to start with consumer buys. Our mission goes hand-in-hand with environmental sustainability by creating an app designed to implement a decision-based buying shift for consumers toward goods that are more sustainable products by eco-friendly companies. This app will help consumers recommend or suggest more eco-friendly companies. Thus, shifting consumers' pockets to help benefit the Earth more—is a small step toward a better chance. </p>
                 </div>
 
                 <div id="featuredCompanies">
