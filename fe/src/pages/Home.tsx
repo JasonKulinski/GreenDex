@@ -9,7 +9,7 @@ const Home: React.FC = () => {
 
     async function test() {
         let result = await doPost('search', {
-            search: 'adidas'
+            search: 'shopify'
         })
         // let result = await doGet('test')
         console.log(result.data)
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <IonCard className='cardDesign'>
-                    <button ion-item>
+                    <button>
                         <img src="amazonlogo.png" />
                         <IonCardHeader>
                             <div className='card-text'>
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
 
 
                 <IonCard>
-                    <button ion-item>
+                    <button>
                         <img className='companylogo' src="amazonlogo.png" />
                         <IonCardHeader>
                             <div className='card-text'>
