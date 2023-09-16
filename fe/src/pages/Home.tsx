@@ -2,8 +2,6 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, Ion
 import { add } from 'ionicons/icons'
 import { doGet } from '../Utils'
 
-
-
 import ExploreContainer from '../components/ExploreContainer'
 import './Home.css';
 
@@ -13,7 +11,7 @@ const Home: React.FC = () => {
         let result = await doGet("test")
         alert(result.data.message)
     }
-/*<img alt="logo" height="40" src="logotest.png" />*/ 
+
     return (
         <IonPage>
             <IonHeader>
@@ -36,22 +34,23 @@ const Home: React.FC = () => {
                 <hr/>
                 </div>
                 
-                <IonCard>
-                    <img alt="Comp1" height="30" src="amazonlogo.png"/>
+                <IonCard >
+                    <button ion-item>
+                    <img src="amazonlogo.png"/>
                     <IonCardHeader>
-                        <IonCardTitle> Comany 1 </IonCardTitle>
-                        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                        <div className='card-text'>
+                            <div className='card-text-left'>
+                                <IonCardTitle id="companytitle"> Comany 1 </IonCardTitle>
+                                <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
+                            </div>
+                            <div className='card-text-right'>
+                                <IonCardSubtitle>A</IonCardSubtitle>
+                            </div>
+                        </div>
                     </IonCardHeader>
-
-                    <IonCardContent> gdgdg</IonCardContent>
-
-                    <IonButton fill="clear"> Learn more</IonButton>
-
-
-
-
+                    </button>
+                    {/* <IonButton className='companybutton' color="success" onClick={test}> Learn more</IonButton> */}
                 </IonCard>
-
 
 
 
