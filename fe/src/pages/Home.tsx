@@ -1,9 +1,10 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton} from '@ionic/react'
-import { add } from 'ionicons/icons'
+import { add, home, search, camera, person } from 'ionicons/icons'
 import { doGet } from '../Utils'
 
 import ExploreContainer from '../components/ExploreContainer'
 import './Home.css';
+
 
 const Home: React.FC = () => {
 
@@ -18,29 +19,27 @@ const Home: React.FC = () => {
                 <IonToolbar className = 'header' color='success'>
                     <div id="imgHeader">
                     <img height="40" src ="logotest.png"/>
-                    <IonTitle >AppName</IonTitle>
+                    <IonTitle> Basket</IonTitle>
                     </div>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen>
+            <IonContent fullscreen={true} className='ion-padding'>
                 <div id="missionHeader">
-                <h1>Our Mission</h1>
-                <hr/>
-                <p>The goal of this app is to blah blah</p>
+                    <h1>Our Mission</h1>
+                    <p>The goal of this app is to blah blah</p>
                 </div>
 
                 <div id="featuredCompanies">
-                <h1>Featured Companies</h1>
-                <hr/>
+                    <h1>Featured Companies</h1>
                 </div>
                 
-                <IonCard >
+                <IonCard>
                     <button ion-item>
-                    <img src="amazonlogo.png"/>
+                    <img className='companylogo' src="amazonlogo.png"/>
                     <IonCardHeader>
                         <div className='card-text'>
                             <div className='card-text-left'>
-                                <IonCardTitle id="companytitle"> Comany 1 </IonCardTitle>
+                                <IonCardTitle id="companytitle"> Company 1 </IonCardTitle>
                                 <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
                             </div>
                             <div className='card-text-right'>
@@ -53,15 +52,6 @@ const Home: React.FC = () => {
                 </IonCard>
 
 
-
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonTitle size="large">Hello </IonTitle>
-                    </IonToolbar>
-                </IonHeader>
-                {/* <IonFabButton className='poopie' onClick={test}>
-                    <IonIcon icon={add} />
-                </IonFabButton> */}
             </IonContent>
         </IonPage>
     );
