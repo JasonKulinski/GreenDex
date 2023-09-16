@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon } from '@ionic/react'
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton} from '@ionic/react'
 import { add } from 'ionicons/icons'
 import { doGet } from '../Utils'
 
@@ -34,9 +34,27 @@ const Home: React.FC = () => {
                 <div id="featuredCompanies">
                 <h1>Featured Companies</h1>
                 <hr/>
-                
                 </div>
                 
+                <IonCard>
+                    <img alt="Comp1" height="30" src="amazonlogo.png"/>
+                    <IonCardHeader>
+                        <IonCardTitle> Comany 1 </IonCardTitle>
+                        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                    </IonCardHeader>
+
+                    <IonCardContent> gdgdg</IonCardContent>
+
+                    <IonButton fill="clear"> Learn more</IonButton>
+
+
+
+
+                </IonCard>
+
+
+
+
                 <IonHeader collapse="condense">
                     <IonToolbar>
                         <IonTitle size="large">Hello </IonTitle>
@@ -45,7 +63,6 @@ const Home: React.FC = () => {
                 {/* <IonFabButton className='poopie' onClick={test}>
                     <IonIcon icon={add} />
                 </IonFabButton> */}
-                <ExploreContainer />
             </IonContent>
         </IonPage>
     );
