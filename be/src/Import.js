@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid"
+
 async function importData(filePath) {
     const jsonArray = await csv().fromFile(filePath)
     return jsonArray
@@ -20,6 +22,7 @@ function organizeData(data) {
 
 function makeCompany(raw) {
     const company = {}
+    company['uuid'] = uuidv4()
     for (const key in raw) {
         if (key === 'Country' || key === 'Industry (Exiobase)' || key === 'Company Name') {
             company[key] = raw[key]
@@ -45,7 +48,7 @@ function makeCompany(raw) {
 
 function mergeRecords(one, two) {
     for (const key in one) {
-        if (key === 'Country' || key === 'Industry (Exiobase)' || key === 'Company Name')
+        if (key === 'Country' || key === 'Industry (Exiobase)' || key === 'Company Name' || key === 'uuid')
             continue
         for (const point of one[key]) {
             const search = two[key].find(o => o['Year'] === point['Year'])

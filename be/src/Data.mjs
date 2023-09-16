@@ -39,7 +39,7 @@ export default class Data {
         await elastic.index({
             index: INDEX,
             document: obj,
-            id: obj['Company Name']
+            id: obj.uuid
         })
     }
 
@@ -49,11 +49,11 @@ export default class Data {
     * @param {Object} objClass The type of object to read.
     * @returns {Promise<any>} The object that is read.
     */
-    static async read(company) {
+    static async read(id) {
         try {
             const result = await elastic.get({
                 index: INDEX,
-                id: company
+                id: id
             })
             return result
         }
@@ -71,7 +71,7 @@ export default class Data {
     static async update(obj) {
         await elastic.update({
             index: INDEX,
-            id: obj['Company Name'],
+            id: obj.uuid,
             doc: obj
         })
     }
@@ -83,7 +83,7 @@ export default class Data {
     static async delete(obj) {
         await elastic.delete({
             index: INDEX,
-            id: obj['Company Name']
+            id: obj.uuid
         })
     }
 
