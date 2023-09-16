@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon } from '@ionic/react'
 import { add } from 'ionicons/icons'
-import { get } from '../Utils'
+import { doGet } from '../Utils'
 
 import ExploreContainer from '../components/ExploreContainer'
 import './Home.css';
@@ -8,8 +8,8 @@ import './Home.css';
 const Home: React.FC = () => {
 
     async function test() {
-        let result = await get("localhost/api/test")
-        alert(result.message)
+        let result = await doGet("test")
+        alert(result.data.message)
     }
 
     return (
