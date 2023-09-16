@@ -48,7 +48,7 @@ function makeCompany(raw) {
 
 function mergeRecords(one, two) {
     for (const key in one) {
-        if (key === 'Country' || key === 'Industry (Exiobase)' || key === 'Company Name')
+        if (key === 'Country' || key === 'Industry (Exiobase)' || key === 'Company Name' || key === 'uuid')
             continue
         for (const point of one[key]) {
             const search = two[key].find(o => o['Year'] === point['Year'])
