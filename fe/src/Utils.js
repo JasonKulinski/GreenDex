@@ -1,6 +1,6 @@
 import { CapacitorHttp } from '@capacitor/core'
 
-const API_URL = 'http://iristhrifting.com/api/'
+const API_URL = 'https://iristhrifting.com/api/'
 
 export async function doGet(url) {
     const options = {
@@ -29,6 +29,9 @@ export function randRangeInt(min, max) {
 export function randRange(min, max) {
     return Math.random() * (max - min) + min
 }
+
+
+// deprecated stuff down here, not using the capacitor native http!!!
 
 export async function get(url) {
     const response = await fetch(`/api/${url}`, {
