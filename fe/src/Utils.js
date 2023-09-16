@@ -1,6 +1,6 @@
 import { CapacitorHttp } from '@capacitor/core'
 
-const API_URL = 'http://iristhrifting.com/api/'
+const API_URL = 'https://iristhrifting.com/api/'
 
 export async function doGet(url) {
     const options = {
