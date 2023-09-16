@@ -3,5 +3,9 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "react-vite"
+  "type": "react-vite",
+  "proxies": [{
+    "path": "/api",
+    "proxyUrl": "http://24.62.128.244/"
+  }]
 }
