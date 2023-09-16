@@ -43,3 +43,13 @@ app.post('/api/company', async (req, res) => {
         res.status(400).send({ message: e })
     }
 })
+
+app.post('/api/search', async (req, res) => {
+    try {
+        const response = await Data.search(req.body.search)
+        return res.status(200).send(response)
+    }
+    catch (e) {
+        res.status(400).send({ message: e })
+    }
+})
