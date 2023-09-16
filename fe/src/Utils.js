@@ -13,7 +13,7 @@ export async function doGet(url) {
 
 export async function doPost(url, data) {
     const options = {
-        url: url,
+        url: `${API_URL}${url}`,
         headers: { 'Content-Type': 'application/json' },
         data: data
     }
