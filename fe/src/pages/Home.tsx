@@ -17,7 +17,7 @@ const Home: React.FC = () => {
             <IonHeader >
                 <IonToolbar className = 'header' color='success'>
                     <div id="imgheader">
-                    <img height="40" src ="logotest.png"/>
+                    <img height="40" src ="basket.png"/>
                     <IonTitle >Basket</IonTitle>
                     </div>
                 </IonToolbar>
@@ -32,9 +32,9 @@ const Home: React.FC = () => {
                     <h1>Featured Companies</h1>
                 </div>
                 
-                <IonCard>
+                <IonCard className='cardDesign'>
                     <button ion-item>
-                    <img className='companylogo' src="amazonlogo.png"/>
+                    <img src="amazonlogo.png"/>
                     <IonCardHeader>
                         <div className='card-text'>
                             <div className='card-text-left'>
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
                                 <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
                             </div>
                             <div className='card-text-right'>
-                                <IonCardSubtitle>A</IonCardSubtitle>
+                                <IonCardSubtitle>Grade:A</IonCardSubtitle>
                             </div>
                         </div>
                     </IonCardHeader>
