@@ -1,6 +1,9 @@
 import * as fs from 'fs'
 import { Client } from '@elastic/elasticsearch'
 
+const INDEX = 'companies'
+const SEARCHFIELDS = ["id^5", "Company Name^5", "Industry (Exiobase)^4"]
+
 const elastic = new Client({
     node: process.env.ES_HOST,
     auth: {
@@ -15,13 +18,13 @@ const elastic = new Client({
 
 try {
     await elastic.indices.create({
-        index: 'indexName'
+        index: INDEX
     })
-    console.log('indexName index created!')
+    console.log(`${INDEX} index created!`)
 }
 catch (e) {
-    if (e.meta.body.error.type == 'resource_already_exists_exception')
-        console.log('indexName initialized...')
+    if (e?.meta?.body?.error?.type == 'resource_already_exists_exception')
+        console.log(`${INDEX} initialized...`)
     else
         console.error(e)
 }
@@ -34,9 +37,9 @@ export default class Data {
     */
     static async create(obj) {
         await elastic.index({
-            index: 'indexName',
+            index: INDEX,
             document: obj,
-            id: obj.id
+            id: obj['Company Name']
         })
     }
 
@@ -46,11 +49,11 @@ export default class Data {
     * @param {Object} objClass The type of object to read.
     * @returns {Promise<any>} The object that is read.
     */
-    static async read(id, objClass) {
+    static async read(company) {
         try {
             const result = await elastic.get({
-                index: 'indexName',
-                id: id
+                index: INDEX,
+                id: company
             })
             return result
         }
@@ -67,8 +70,8 @@ export default class Data {
     */
     static async update(obj) {
         await elastic.update({
-            index: 'indexName',
-            id: obj.id,
+            index: INDEX,
+            id: obj['Company Name'],
             doc: obj
         })
     }
@@ -79,25 +82,21 @@ export default class Data {
     */
     static async delete(obj) {
         await elastic.delete({
-            index: 'indexName',
-            id: obj.id
+            index: INDEX,
+            id: obj['Company Name']
         })
     }
 
     /**
     * Attempts to search for an item with the given text and options.
     * @param {string} text The search text.
-    * @param {Object} objClass The type of object to search for.
     * @param {string} [options] Any sorting options.
     * @param {number} [from=0] The number of matches to start returning results after ('from' in ES).
     * @param {string} [specificField] A specific field to search under (otherwise multiple fields will be searched).
     */
-    static async search(text, objClass, options, from, specificField) {
+    static async search(text, options, from, specificField) {
         if (!text || !text?.length)
             throw new Error('text is required to search!')
-
-        if (!objClass || !objClass?.length)
-            throw new Error('objClass is required to search!')
 
         from ??= 0
 
@@ -132,7 +131,7 @@ export default class Data {
         }
 
         const esRequest = {
-            index: 'indexName',
+            index: INDEX,
             query: {
                 multi_match: undefined,
                 match: undefined
@@ -145,7 +144,7 @@ export default class Data {
             esRequest.query.multi_match = {
                 query: text,
                 fuzziness: 1,
-                fields: objClass.searchFields
+                fields: SEARCHFIELDS
             }
         }
         else {
