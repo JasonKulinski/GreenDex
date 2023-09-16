@@ -4,9 +4,9 @@ import App from './App';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
-import { Route, Redirect } from 'react-router';
-
 import { search } from 'ionicons/icons';
+
+import { Route, Redirect } from 'react-router';
 
 import Home from './pages/Home';
 import SearchPage from './pages/SearchPage';

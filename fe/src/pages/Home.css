@@ -12,11 +12,13 @@
 
 #featuredcompanies{
     color: black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
 
 #missionheader{
     padding-left: 5px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:black;
 }
 .ion-toolbar{
@@ -32,6 +34,14 @@
     text-align: left;
 }
 
+ion-card{
+    display: flex;
+    margin: auto;
+    max-width: fit-content;
+    margin-bottom: 10px;
+
+}
+
 .card-text {
     display: flex;
     width: 100%;
@@ -44,7 +54,3 @@
     font-size: 40px;
 }
 
-
-.poopie {
-    --background: #FFA07A;
-}
