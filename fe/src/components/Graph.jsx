@@ -1,4 +1,4 @@
-import { Bar } from "react-chartjs-2"
+import { Line } from "react-chartjs-2"
 import { CategoryScale } from "chart.js"
 import { Chart as ChartJS } from "chart.js/auto"
 import {
@@ -30,11 +30,11 @@ const Graph = () => {
             },
         ],
     }
-
+    
     return (
         <>
             <IonTitle>Bar Example</IonTitle>
-            <Bar data={data} />
+            <Line data={data} />
         </>
     )
 }
