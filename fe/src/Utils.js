@@ -30,6 +30,9 @@ export function randRange(min, max) {
     return Math.random() * (max - min) + min
 }
 
+
+// deprecated stuff down here, not using the capacitor native http!!!
+
 export async function get(url) {
     const response = await fetch(`/api/${url}`, {
         mode: 'cors'
