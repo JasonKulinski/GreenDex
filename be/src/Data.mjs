@@ -143,7 +143,7 @@ export default class Data {
         if (!specificField || !specificField.length) {
             esRequest.query.multi_match = {
                 query: text,
-                fuzziness: 1,
+                fuzziness: 3,
                 fields: SEARCHFIELDS
             }
         }

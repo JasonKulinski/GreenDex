@@ -2,8 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, Ion
 import './Detail.css'
 import { doPost } from '../Utils'
 import Graph from '../components/Graph.jsx'
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 const Detail = ({ match }) => {
 
@@ -14,6 +13,7 @@ const Detail = ({ match }) => {
             }
         }
     })
+    const [summary, setSummary] = useState('Loading...')
 
     useIonViewWillEnter(() => {
         async function load() {
@@ -31,8 +31,24 @@ const Detail = ({ match }) => {
         load()
     })
 
-    function test() {
-        console.log(company)
+    useEffect(() => {
+        showSummary()
+    }, [company])
+
+    function showSummary() {
+        let industry = 'Loading...'
+        let totalGHG = 'Loading...'
+        company.data
+        if (company?.data?._source?.['Industry (Exiobase)'])
+            industry = company.data._source['Industry (Exiobase)']
+        if (company?.data?._source[' Total GHG Environmental Impact (Scope 1, 2, 3)']?.length > 0)
+            totalGHG = company.data._source[' Total GHG Environmental Impact (Scope 1, 2, 3)'][0].Value
+        setSummary(
+            <>
+                <div>{industry}</div>
+                <div><b>Total Greenhouse Gas Environmental Impact:</b> ${totalGHG}</div>
+            </>
+        )
     }
 
     return (
@@ -62,7 +78,7 @@ const Detail = ({ match }) => {
                     {company.data._source['Grade']}
                 </div>
                 <div id="data">
-                    {company.data._source['Industry (Exiobase)']}
+                    {summary}
                 </div>
             </IonContent>
         </IonPage>
