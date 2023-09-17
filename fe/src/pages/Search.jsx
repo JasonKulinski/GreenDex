@@ -35,36 +35,45 @@ const Search = () => {
         if (company.data == undefined)
             return
         setResults([])
-        for (let i = 0; i < company.data.hits.length; i++) {
-            const c = company.data.hits[i]
-            setResults(prevResults => (
-                [<IonCard id={prevResults.length} className='card' routerLink={`/co/${c?._source?.['uuid']}`}>
-                    <IonCardHeader>
-                        <div className='card-text'>
-                            <div className='card-text-left'>
-                                <IonCardTitle id="companytitle"> {c?._source?.['Company Name']} </IonCardTitle>
-                                <IonCardSubtitle id="industry">{c?._source?.['Industry (Exiobase)']}</IonCardSubtitle>
-                            </div>
-                            <div className='card-text-right'>
-                                <IonCardSubtitle>
-                                    <div id='card-grade' className={
-                                        c._source['Grade']?.includes('A') ? 'good'
-                                            :
-                                            c._source['Grade']?.includes('B') ? 'okay'
+        if (company.data.hits.length == 0) {
+            setResults([
+                <>
+                    <div style={{ textAlign: 'center' }}>No Results Found</div>
+                </>
+            ])
+        }
+        else {
+            for (let i = 0; i < company.data.hits.length; i++) {
+                const c = company.data.hits[i]
+                setResults(prevResults => (
+                    [<IonCard id={prevResults.length} className='card' routerLink={`/co/${c?._source?.['uuid']}`}>
+                        <IonCardHeader>
+                            <div className='card-text'>
+                                <div className='card-text-left'>
+                                    <IonCardTitle id="companytitle"> {c?._source?.['Company Name']} </IonCardTitle>
+                                    <IonCardSubtitle id="industry">{c?._source?.['Industry (Exiobase)']}</IonCardSubtitle>
+                                </div>
+                                <div className='card-text-right'>
+                                    <IonCardSubtitle>
+                                        <div id='card-grade' className={
+                                            c._source['Grade']?.includes('A') ? 'good'
                                                 :
-                                                c._source['Grade']?.includes('C') ? 'meh'
+                                                c._source['Grade']?.includes('B') ? 'okay'
                                                     :
-                                                    c._source['Grade']?.includes('D') ? 'poor'
-                                                        : 'bad'
-                                    }>
-                                        {c?._source?.['Grade']}
-                                    </div>
-                                </IonCardSubtitle>
+                                                    c._source['Grade']?.includes('C') ? 'meh'
+                                                        :
+                                                        c._source['Grade']?.includes('D') ? 'poor'
+                                                            : 'bad'
+                                        }>
+                                            {c?._source?.['Grade']}
+                                        </div>
+                                    </IonCardSubtitle>
+                                </div>
                             </div>
-                        </div>
-                    </IonCardHeader>
-                </IonCard>, prevResults])
-            )
+                        </IonCardHeader>
+                    </IonCard>, prevResults])
+                )
+            }
         }
     }
 

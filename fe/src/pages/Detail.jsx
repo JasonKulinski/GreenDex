@@ -2,8 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, Ion
 import './Detail.css'
 import { doPost } from '../Utils'
 import Graph from '../components/Graph.jsx'
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 const Detail = ({ match }) => {
 
@@ -14,6 +13,7 @@ const Detail = ({ match }) => {
             }
         }
     })
+    const [summary, setSummary] = useState('Loading...')
 
     useIonViewWillEnter(() => {
         async function load() {
@@ -31,8 +31,29 @@ const Detail = ({ match }) => {
         load()
     })
 
-    function test() {
-        console.log(company)
+    useEffect(() => {
+        showSummary()
+    }, [company])
+
+    function showSummary() {
+        let industry = 'Loading...'
+        let totalGHG = 'Loading...'
+        let totalGHGYear = 'Loading...'
+        let c = undefined
+        if (company?.data?._source)
+            c = company.data._source
+        if (c?.['Industry (Exiobase)'])
+            industry = c['Industry (Exiobase)']
+        if (c?.[' Total GHG Environmental Impact (Scope 1, 2, 3)']?.length > 0) {
+            totalGHG = c[' Total GHG Environmental Impact (Scope 1, 2, 3)'][c[' Total GHG Environmental Impact (Scope 1, 2, 3)'].length - 1].Value
+            totalGHGYear = c[' Total GHG Environmental Impact (Scope 1, 2, 3)'][c[' Total GHG Environmental Impact (Scope 1, 2, 3)'].length - 1].Year
+        }
+        setSummary(
+            <>
+                <div>{industry}</div>
+                <div><b>Total Greenhouse Gas Environmental Impact:</b> ${totalGHG} (data from {totalGHGYear})</div>
+            </>
+        )
     }
 
     return (
@@ -62,7 +83,7 @@ const Detail = ({ match }) => {
                     {company.data._source['Grade']}
                 </div>
                 <div id="data">
-                    {company.data._source['Industry (Exiobase)']}
+                    {summary}
                 </div>
             </IonContent>
         </IonPage>

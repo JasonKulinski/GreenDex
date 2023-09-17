@@ -3,6 +3,7 @@ ion-title {
     font-family: Georgia, Times, 'Times New Roman', serif;
     display: flex;
     margin-right: 40px;
+    color: black;
 }
 
 #imgheader {
