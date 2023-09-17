@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFabButton } from '@ionic/react';
 import { Camera, CameraSource } from '@capacitor/camera';
+import { useHistory } from 'react-router';
 
 const CameraPage = () => {
   const [photo, setPhoto] = useState();
+  const [submit, setSubmit] = useState(<></>);
+  const history = useHistory()
 
   const takePhoto = async () => {
     try {
@@ -14,10 +17,30 @@ const CameraPage = () => {
         source: 'camera', // Use 'camera'
       });
       setPhoto(image.dataUrl);
+      setSubmit(
+        <>
+          <IonFabButton onClick={ai}>
+            Submit
+          </IonFabButton>
+        </>
+      )
     } catch (error) {
       console.error(`Error taking a photo: ${error}`);
     }
   };
+
+  function ai() {
+    setSubmit(
+      <>
+      <IonFabButton>
+            Loading...
+      </IonFabButton>
+      </>
+    )
+    setTimeout(() => {
+      history.push('/co/433e24d2-0e9a-4106-88f2-f3269dbd325f')
+    }, 4550)
+  }
 
   return (
     <IonPage>
@@ -36,6 +59,7 @@ const CameraPage = () => {
             <img src={photo} alt="Captured" />
           </div>
         )}
+        {submit}
       </IonContent>
     </IonPage>
   );
