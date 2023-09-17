@@ -26,10 +26,28 @@ const Home: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen={true} className='ion-padding'>
-                <div id="missionheader">
+                <IonCard className="introcard">
+                    <IonCardHeader>
+                        <IonCardSubtitle>Welcome to Basket</IonCardSubtitle>
+                        <IonCardTitle>Our mission</IonCardTitle>
+                    </IonCardHeader>
+                    <IonCardContent>
+                        <p>
+                        Now that your app has been created, you'll want to start building out features and
+                        components. Check out some of the resources below for next steps.
+                        </p>
+                     </IonCardContent>
+                </IonCard>
+
+
+
+
+
+
+                {/* <div id="missionheader">
                     <h1>Our Mission</h1>
                     <p>With global warming hitting a high rating compared to the past few years, every step of making a change counts. Our mission goes hand-in-hand with environmental sustainability by creating an app designed to implement a decision-based buying shift for consumers towards more sustainable products provided by eco-friendly companies. This app recommends or suggests suitable eco-friendly companies to shift consumers' pockets to benefiting the Earth more, making a small step toward a better future.</p>
-                </div>
+                </div> */}
 
                 <div id="featuredcompanies">
                     <h1>Featured Companies</h1>
