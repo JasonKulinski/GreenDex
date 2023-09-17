@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFabButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFabButton, IonIcon } from '@ionic/react';
+import { home, search, camera, person } from 'ionicons/icons'
 import { Camera, CameraSource } from '@capacitor/camera';
 import { useHistory } from 'react-router';
+import './Camera.css'
 
 const CameraPage = () => {
   const [photo, setPhoto] = useState();
@@ -19,7 +21,7 @@ const CameraPage = () => {
       setPhoto(image.dataUrl);
       setSubmit(
         <>
-          <IonFabButton onClick={ai}>
+          <IonFabButton id='submitPic' onClick={ai}>
             Submit
           </IonFabButton>
         </>
@@ -32,7 +34,7 @@ const CameraPage = () => {
   function ai() {
     setSubmit(
       <>
-      <IonFabButton>
+      <IonFabButton id='submitPic'>
             Loading...
       </IonFabButton>
       </>
@@ -60,6 +62,21 @@ const CameraPage = () => {
           </div>
         )}
         {submit}
+
+        <IonToolbar id='toolbar'>
+                    <IonButton routerLink='/home'>
+                        <IonIcon icon={home}></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/search'>
+                        <IonIcon icon={search}></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/camera'>
+                        <IonIcon icon={camera}></IonIcon>
+                    </IonButton>
+                    <IonButton>
+                        <IonIcon icon={person}></IonIcon>
+                    </IonButton>
+                </IonToolbar>
       </IonContent>
     </IonPage>
   );
