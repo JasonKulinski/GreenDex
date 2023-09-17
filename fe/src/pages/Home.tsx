@@ -35,10 +35,10 @@ const Home: React.FC = () => {
 
                 <IonToolbar id='toolbar'>
                     <IonButton routerLink='/home'>
-                        <IonIcon icon={home}  ></IonIcon>
+                        <IonIcon icon={home}></IonIcon>
                     </IonButton>
                     <IonButton routerLink='/search'>
-                        <IonIcon icon={search}  ></IonIcon>
+                        <IonIcon icon={search}></IonIcon>
                     </IonButton>
                     <IonButton routerLink='/camera'>
                         <IonIcon icon={camera}></IonIcon>
