@@ -1,6 +1,9 @@
 ion-title {
     font-weight: bold;
     font-family: Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    margin-right: 40px;
+    color: black;
 }
 
 #imgheader {
@@ -64,9 +67,27 @@ ion-card {
     align-items: center;
     justify-content: center;
     max-width: 90vw;
+    margin: auto;
 }
 
 #content p {
     max-width: 1000px;
     text-align: center;
+}
+
+#toolbar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+}
+
+#toolbar ion-button {
+    box-sizing: content-box;
+    box-shadow: none;
+    width: 20%;
 }
