@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
+import Camera from './pages/Camera'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -40,6 +41,9 @@ const App: React.FC = () => (
                     <Redirect to="/home" />
                 </Route>
                 <Route path="/co/:id" component={Detail} />
+                <Route exact path="/camera">
+                    <Camera />
+                </Route>
             </IonRouterOutlet>
         </IonReactRouter>
     </IonApp>
