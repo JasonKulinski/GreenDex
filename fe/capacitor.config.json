@@ -1,0 +1,10 @@
+{
+  "appId": "com.hackathon.myapp",
+  "appName": "hackaton",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "cordova": {},
+  "server": {
+    "androidScheme": "https"
+  }
+}
