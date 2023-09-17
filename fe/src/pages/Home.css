@@ -1,6 +1,8 @@
 ion-title {
     font-weight: bold;
     font-family: Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    margin-right: 40px;
 }
 
 #imgheader {
@@ -64,6 +66,7 @@ ion-card {
     align-items: center;
     justify-content: center;
     max-width: 90vw;
+    margin: auto;
 }
 
 #content p {

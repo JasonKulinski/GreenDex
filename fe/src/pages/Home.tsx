@@ -7,25 +7,17 @@ import './Home.css'
 
 const Home: React.FC = () => {
 
-    async function test() {
-        let result = await doPost('search', {
-            search: 'adidas'
-        })
-        // let result = await doGet('test')
-        console.log(result.data)
-    }
-
     return (
         <IonPage>
             <IonHeader >
                 <IonToolbar className='header' color='success'>
                     <div id="imgheader">
                         <img height="40" src="basket.png" />
-                        <IonTitle onClick={test}>BASKET</IonTitle>
+                        <IonTitle>BASKET</IonTitle>
                     </div>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen={true} className='ion-padding'>
+            <IonContent fullscreen={true} className='ion-content'>
                 <div id='content'>
                     <h1>Welcome to Basket!</h1>
                     <img height="120" src="basket.png" />
