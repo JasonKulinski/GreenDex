@@ -73,3 +73,19 @@ ion-card {
     max-width: 1000px;
     text-align: center;
 }
+
+#homeicon{
+    padding-left: 10px;
+    padding-right: 195px;
+    
+}
+
+#cameraicon{
+    align-items: center ;
+    position: relative;
+}
+
+#personicon{
+    padding-left: 180px;
+    position: relative;
+}

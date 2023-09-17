@@ -37,6 +37,24 @@ const Home: React.FC = () => {
                     </IonFabButton>
                 </div>
 
+                <div>
+                    <IonHeader>
+                        <IonToolbar>
+                                <IonButton id="homeicon">
+                                    <IonIcon icon={home}  ></IonIcon> <b></b>
+                                </IonButton>
+                                <IonButton id='cameraicon'>
+                                    <IonIcon icon={camera}></IonIcon>
+                                </IonButton>
+                                <IonButton id="personicon">
+                                    <IonIcon icon={person}></IonIcon>
+                                </IonButton>
+                        </IonToolbar>
+                    </IonHeader>
+
+
+                </div>
+
             </IonContent>
         </IonPage>
     );
