@@ -1,25 +1,32 @@
-
-#imgHeader{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 10px;
+#company-name {
+    font-size: 3rem;
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
+    margin-top: 1rem;
 }
 
-hr{
-    width: 97%;
-    height: 1px;
+#company-grade {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
 }
 
-#missionHeader{
-    padding-left: 5px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+.good {
+    color: green;
 }
 
-.poopie {
-    --background: #FFA07A;
+.okay {
+    color: yellowgreen;
+}
+
+.meh {
+    color: yellow;
+}
+
+.poor {
+    color: orange;
+}
+
+.bad {
+    color: red;
 }
