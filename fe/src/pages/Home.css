@@ -1,4 +1,7 @@
-
+ion-title {
+    font-weight: bold;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+}
 
 #imgheader{
     display: flex;
