@@ -38,6 +38,8 @@ app.post('/api/company', async (req, res) => {
     try {
         const response = await Data.read(req.body.company)
         response._source['Grade'] = grade(response._source)
+        if (response._source['Industry (Exiobase)'].includes('('))
+            response._source['Industry (Exiobase)'] = response._source['Industry (Exiobase)'].slice(0, response._source['Industry (Exiobase)'].indexOf('(') - 1)
         return res.status(200).send(response)
     }
     catch (e) {
@@ -50,6 +52,8 @@ app.post('/api/search', async (req, res) => {
         const response = await Data.search(req.body.search)
         for (let company of response.hits) {
             company._source['Grade'] = grade(company._source)
+            if (company._source['Industry (Exiobase)'].includes('('))
+                company._source['Industry (Exiobase)'] = company._source['Industry (Exiobase)'].slice(0, company._source['Industry (Exiobase)'].indexOf('(') - 1)
         }
         return res.status(200).send(response)
     }

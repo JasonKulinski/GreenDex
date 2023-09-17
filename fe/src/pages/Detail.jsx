@@ -37,11 +37,11 @@ const Detail = ({ match }) => {
 
     return (
         <IonPage>
-            <IonHeader>
+            <IonHeader >
                 <IonToolbar className='header' color='success'>
-                    <div id="imgHeader">
-                        <img height="40" src="logotest.png" />
-                        <IonTitle onClick={test}>Basket</IonTitle>
+                    <div id="imgheader">
+                        <img height="40" src="basket.png" />
+                        <IonTitle>BASKET</IonTitle>
                     </div>
                 </IonToolbar>
             </IonHeader>
@@ -51,15 +51,18 @@ const Detail = ({ match }) => {
                 </div>
                 <div id='company-grade' className={
                     company.data._source['Grade']?.includes('A') ? 'good'
-                    :
-                    company.data._source['Grade']?.includes('B') ? 'okay'
-                    :
-                    company.data._source['Grade']?.includes('C') ? 'meh'
-                    :
-                    company.data._source['Grade']?.includes('D') ? 'poor'
-                    : 'bad'
+                        :
+                        company.data._source['Grade']?.includes('B') ? 'okay'
+                            :
+                            company.data._source['Grade']?.includes('C') ? 'meh'
+                                :
+                                company.data._source['Grade']?.includes('D') ? 'poor'
+                                    : 'bad'
                 }>
                     {company.data._source['Grade']}
+                </div>
+                <div id="data">
+                    {company.data._source['Industry (Exiobase)']}
                 </div>
             </IonContent>
         </IonPage>
