@@ -1,18 +1,71 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton } from '@ionic/react'
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton, IonSearchbar } from '@ionic/react'
 import { add, home, search, camera, person } from 'ionicons/icons'
 import { doGet, doPost } from '../Utils'
+import { useState, useEffect } from 'react'
 
 import ExploreContainer from '../components/ExploreContainer'
-import './Home.css'
+import './Search.css'
 
 const Search = () => {
 
-    async function test() {
-        let result = await doPost('search', {
-            search: 'adidas'
-        })
-        // let result = await doGet('test')
-        console.log(result.data)
+    const [searchQuery, setSearchQuery] = useState('')
+    const [company, setCompany] = useState({})
+    const [results, setResults] = useState([])
+
+    async function doSearch(q) {
+        try {
+            if (q.trim().length == 0)
+                return
+            const co = await doPost("search", {
+                search: q
+            })
+            setCompany(co)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        showResults()
+    }, [company])
+
+    function showResults() {
+        console.log(company)
+        if (company.data == undefined)
+            return
+        setResults([])
+        for (let i = 0; i < company.data.hits.length; i++) {
+            const c = company.data.hits[i]
+            setResults(prevResults => (
+                [<IonCard id={prevResults.length} className='card' routerLink={`/co/${c?._source?.['uuid']}`}>
+                    <IonCardHeader>
+                        <div className='card-text'>
+                            <div className='card-text-left'>
+                                <IonCardTitle id="companytitle"> {c?._source?.['Company Name']} </IonCardTitle>
+                                <IonCardSubtitle id="industry">{c?._source?.['Industry (Exiobase)']}</IonCardSubtitle>
+                            </div>
+                            <div className='card-text-right'>
+                                <IonCardSubtitle>
+                                    <div id='card-grade' className={
+                                        c._source['Grade']?.includes('A') ? 'good'
+                                            :
+                                            c._source['Grade']?.includes('B') ? 'okay'
+                                                :
+                                                c._source['Grade']?.includes('C') ? 'meh'
+                                                    :
+                                                    c._source['Grade']?.includes('D') ? 'poor'
+                                                        : 'bad'
+                                    }>
+                                        {c?._source?.['Grade']}
+                                    </div>
+                                </IonCardSubtitle>
+                            </div>
+                        </div>
+                    </IonCardHeader>
+                </IonCard>, prevResults])
+            )
+        }
     }
 
     return (
@@ -21,56 +74,13 @@ const Search = () => {
                 <IonToolbar className='header' color='success'>
                     <div id="imgheader">
                         <img height="40" src="basket.png" />
-                        <IonTitle onClick={test}>BASKET</IonTitle>
+                        <IonTitle>BASKET</IonTitle>
                     </div>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen={true} className='ion-padding'>
-                <div id="missionheader">
-                    <h1>Our Mission</h1>
-                    <p>With global warming hitting a high rating compared to the past few years, every step of making a change counts. Our mission goes hand-in-hand with environmental sustainability by creating an app designed to implement a decision-based buying shift for consumers towards more sustainable products provided by eco-friendly companies. This app recommends or suggests suitable eco-friendly companies to shift consumers' pockets to benefiting the Earth more, making a small step toward a better future.</p>
-                </div>
-
-                <div id="featuredcompanies">
-                    <h1>Featured Companies</h1>
-                </div>
-
-                <IonCard className='cardDesign'>
-                    <button>
-                        <img src="amazonlogo.png" />
-                        <IonCardHeader>
-                            <div className='card-text'>
-                                <div className='card-text-left'>
-                                    <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
-                                    <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
-                                </div>
-                                <div className='card-text-right'>
-                                    <IonCardSubtitle>Grade:A</IonCardSubtitle>
-                                </div>
-                            </div>
-                        </IonCardHeader>
-                    </button>
-                </IonCard>
-
-
-                <IonCard>
-                    <button>
-                        <img className='companylogo' src="amazonlogo.png" />
-                        <IonCardHeader>
-                            <div className='card-text'>
-                                <div className='card-text-left'>
-                                    <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
-                                    <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
-                                </div>
-                                <div className='card-text-right'>
-                                    <IonCardSubtitle>A</IonCardSubtitle>
-                                </div>
-                            </div>
-                        </IonCardHeader>
-                    </button>
-                </IonCard>
-
-
+                <IonSearchbar id='search' value={searchQuery} onIonChange={e => doSearch(e.detail.value)} ></IonSearchbar>
+                {results}
             </IonContent>
         </IonPage>
     );

@@ -12,7 +12,7 @@
 }
 
 .good {
-    color: green;
+    color: rgb(5, 156, 5);
 }
 
 .okay {
@@ -20,7 +20,7 @@
 }
 
 .meh {
-    color: yellow;
+    color: rgb(209, 209, 0);
 }
 
 .poor {
@@ -29,4 +29,12 @@
 
 .bad {
     color: red;
+}
+
+#data {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 2rem;
 }

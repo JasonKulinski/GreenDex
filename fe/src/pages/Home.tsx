@@ -1,5 +1,5 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton } from '@ionic/react'
-import { add, home, search, camera, person } from 'ionicons/icons'
+import { home, search, camera, person } from 'ionicons/icons'
 import { doGet, doPost } from '../Utils'
 
 import ExploreContainer from '../components/ExploreContainer'
@@ -50,43 +50,12 @@ const Home: React.FC = () => {
                 </div> */}
 
                 <div id="featuredcompanies">
-                    <h1>Featured Companies</h1>
+                    <h1>Try out Search:</h1>
                 </div>
 
-                <IonCard className='cardDesign'>
-                    <button>
-                        <img src="amazonlogo.png" />
-                        <IonCardHeader>
-                            <div className='card-text'>
-                                <div className='card-text-left'>
-                                    <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
-                                    <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
-                                </div>
-                                <div className='card-text-right'>
-                                    <IonCardSubtitle>Grade:A</IonCardSubtitle>
-                                </div>
-                            </div>
-                        </IonCardHeader>
-                    </button>
-                </IonCard>
-
-
-                <IonCard>
-                    <button>
-                        <img className='companylogo' src="amazonlogo.png" />
-                        <IonCardHeader>
-                            <div className='card-text'>
-                                <div className='card-text-left'>
-                                    <IonCardTitle id="companytitle"> Company Name </IonCardTitle>
-                                    <IonCardSubtitle id="industry">Industry</IonCardSubtitle>
-                                </div>
-                                <div className='card-text-right'>
-                                    <IonCardSubtitle>A</IonCardSubtitle>
-                                </div>
-                            </div>
-                        </IonCardHeader>
-                    </button>
-                </IonCard>
+                <IonFabButton routerLink='/search'>
+                    <IonIcon icon={search} />
+                </IonFabButton>
 
 
             </IonContent>
