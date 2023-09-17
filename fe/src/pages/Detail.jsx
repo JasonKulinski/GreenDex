@@ -38,15 +38,20 @@ const Detail = ({ match }) => {
     function showSummary() {
         let industry = 'Loading...'
         let totalGHG = 'Loading...'
-        company.data
-        if (company?.data?._source?.['Industry (Exiobase)'])
-            industry = company.data._source['Industry (Exiobase)']
-        if (company?.data?._source[' Total GHG Environmental Impact (Scope 1, 2, 3)']?.length > 0)
-            totalGHG = company.data._source[' Total GHG Environmental Impact (Scope 1, 2, 3)'][0].Value
+        let totalGHGYear = 'Loading...'
+        let c = undefined
+        if (company?.data?._source)
+            c = company.data._source
+        if (c?.['Industry (Exiobase)'])
+            industry = c['Industry (Exiobase)']
+        if (c?.[' Total GHG Environmental Impact (Scope 1, 2, 3)']?.length > 0) {
+            totalGHG = c[' Total GHG Environmental Impact (Scope 1, 2, 3)'][c[' Total GHG Environmental Impact (Scope 1, 2, 3)'].length - 1].Value
+            totalGHGYear = c[' Total GHG Environmental Impact (Scope 1, 2, 3)'][c[' Total GHG Environmental Impact (Scope 1, 2, 3)'].length - 1].Year
+        }
         setSummary(
             <>
                 <div>{industry}</div>
-                <div><b>Total Greenhouse Gas Environmental Impact:</b> ${totalGHG}</div>
+                <div><b>Total Greenhouse Gas Environmental Impact:</b> ${totalGHG} (data from {totalGHGYear})</div>
             </>
         )
     }
