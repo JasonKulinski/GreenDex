@@ -15,8 +15,35 @@ const Detail = ({ match }) => {
         }
     })
     const [summary, setSummary] = useState('Loading...')
+    const [article, setArticle] = useState(<></>)
 
     useIonViewWillEnter(() => {
+        async function load() {
+            try {
+                setCompany({
+                    data: {
+                        _source: {
+                            'Company Name': 'Loading...'
+                        }
+                    }
+                })
+                if (company.data._source['Company Name'] !== 'Loading...')
+                    return
+                const co = await doPost("company", {
+                    company: match.params.id
+                })
+                if (company.data._source.uuid == match.params.id)
+                    setCompany(co)
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
+
+        load()
+    })
+
+    useEffect(() => {
         async function load() {
             try {
                 const co = await doPost("company", {
@@ -30,10 +57,40 @@ const Detail = ({ match }) => {
         }
 
         load()
-    })
+    }, [match.params.id])
 
     useEffect(() => {
         showSummary()
+        if (company.data._source['Company Name'] === 'ADIDAS AG')
+            setArticle(
+                <>
+                    <br />
+                    <h1 style={{
+                        textAlign: 'center'
+                    }}>ADIDAS AG in the News:</h1>
+                    <br />
+                    <IonCard className='card'>
+                        <IonCardHeader>
+                            <div className='card-text'>
+                                <div className='card-text-left'>
+                                    <IonCardTitle id="companytitle">THE DARK SIDE OF ADIDAS: 8 UNETHICAL PRACTICES AND CONTROVERSIES</IonCardTitle>
+                                    <IonCardSubtitle id="industry">
+                                        <i>By Ogbo Godfrey</i><br />
+                                        ClimateRealTalk
+                                    </IonCardSubtitle>
+                                </div>
+                                <div className='card-text-right'>
+                                    <IonCardSubtitle>
+                                        <div id='card-grade'>
+                                        </div>
+                                    </IonCardSubtitle>
+                                </div>
+                            </div>
+                        </IonCardHeader>
+                    </IonCard>
+                </>)
+        else
+            setArticle(<></>)
     }, [company])
 
     function showSummary() {
@@ -86,6 +143,8 @@ const Detail = ({ match }) => {
                 <div id="data">
                     {summary}
                 </div>
+
+                {article}
 
                 <IonToolbar id='toolbar'>
                     <IonButton routerLink='/home'>
