@@ -33,8 +33,11 @@
 
 #data {
     width: 100%;
+    max-width: 90vw;
     display: flex;
     justify-content: center;
+    text-align: center;
+    margin: auto;
     margin-top: 1rem;
     font-size: 2rem;
 }
