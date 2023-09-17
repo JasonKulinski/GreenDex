@@ -81,8 +81,7 @@ const Detail = ({ match }) => {
                                 </div>
                                 <div className='card-text-right'>
                                     <IonCardSubtitle>
-                                        <div id='card-grade'>
-                                        </div>
+                                    <img src='realtalk.webp' width='400'/>
                                     </IonCardSubtitle>
                                 </div>
                             </div>
