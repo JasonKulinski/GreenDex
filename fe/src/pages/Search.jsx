@@ -5,7 +5,7 @@ import { doGet, doPost } from '../Utils'
 import ExploreContainer from '../components/ExploreContainer'
 import './Home.css'
 
-const Home: React.FC = () => {
+const Search = () => {
 
     async function test() {
         let result = await doPost('search', {
@@ -76,4 +76,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home
+export default Search
