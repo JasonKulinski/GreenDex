@@ -3,41 +3,42 @@ ion-title {
     font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
-#imgheader{
+#imgheader {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: 10px;
     text-align: center;
-    font-family:'Copperplate Gothic Bold';
-    
+    font-family: 'Copperplate Gothic Bold';
+
 }
 
-#featuredcompanies{
+#featuredcompanies {
     color: black;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
 
-#missionheader{
+#missionheader {
     padding-left: 5px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color:black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
 }
-.ion-toolbar{
+
+.ion-toolbar {
     --opacity: 0.5;
 }
 
-#companytitle{
+#companytitle {
     text-align: left;
-    color:black;
+    color: black;
 }
 
-#industry{
+#industry {
     text-align: left;
 }
 
-ion-card{
+ion-card {
     display: flex;
     margin: auto;
     max-width: fit-content;
@@ -57,3 +58,15 @@ ion-card{
     font-size: 2rem;
 }
 
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+}
+
+#content p {
+    max-width: 1000px;
+    text-align: center;
+}
