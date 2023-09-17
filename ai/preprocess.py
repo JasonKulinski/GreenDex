@@ -47,6 +47,8 @@ def run_yolov7_detection(input_image_path, weights_path, output_json_path):
         pred = model(img, augment=False)[0]
 
         # Process detection results
+        image_detection_results = []  # Store results for this image
+
         for det in pred:
             gn = torch.tensor(im0s.shape, device=device)[[1, 0, 1, 0]]  # Ensure same device
             det_copy = det.clone()  # Make a copy of det
@@ -67,13 +69,16 @@ def run_yolov7_detection(input_image_path, weights_path, output_json_path):
                 x1, y1, x2, y2 = map(int, det_copy[selected_detection_index, :4])
                 bbox = [x1, y1, x2, y2]
 
-                # Append detection result to the list
-                detection_results = [{
+                # Append detection result to the list for this image
+                image_detection_results.append({
                     "label": labels[selected_detection_index],
                     "bbox": bbox
-                }]
-                break  # Stop processing after saving the selected detection
+                })
 
-        # Save detection result as a JSON file
-        with open(output_json_path, 'w') as json_file:
-            json.dump(detection_results, json_file)
+        # Append the results for this image to the overall detection results
+        detection_results.append(image_detection_results)
+
+    # Save all detection results as a JSON file
+    with open(output_json_path, 'w') as json_file:
+        json.dump(detection_results, json_file)
+    print(f"Output JSON file saved at: {output_json_path}")
