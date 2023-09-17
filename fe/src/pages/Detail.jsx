@@ -1,5 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFabButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonButton, useIonViewWillEnter } from '@ionic/react'
 import './Detail.css'
+import { add, home, search, camera, person } from 'ionicons/icons'
 import { doPost } from '../Utils'
 import Graph from '../components/Graph.jsx'
 import { useState, useEffect } from 'react'
@@ -85,6 +86,21 @@ const Detail = ({ match }) => {
                 <div id="data">
                     {summary}
                 </div>
+
+                <IonToolbar id='toolbar'>
+                    <IonButton routerLink='/home'>
+                        <IonIcon icon={home}  ></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/search'>
+                        <IonIcon icon={search}  ></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/camera'>
+                        <IonIcon icon={camera}></IonIcon>
+                    </IonButton>
+                    <IonButton>
+                        <IonIcon icon={person}></IonIcon>
+                    </IonButton>
+                </IonToolbar>
             </IonContent>
         </IonPage>
     )

@@ -75,18 +75,18 @@ ion-card {
     text-align: center;
 }
 
-#homeicon{
-    padding-left: 10px;
-    padding-right: 195px;
-    
+#toolbar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
 }
 
-#cameraicon{
-    align-items: center ;
-    position: relative;
-}
-
-#personicon{
-    padding-left: 180px;
-    position: relative;
+#toolbar ion-button {
+    box-sizing: content-box;
+    box-shadow: none;
+    width: 20%;
 }

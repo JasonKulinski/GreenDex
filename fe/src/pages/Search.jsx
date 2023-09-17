@@ -90,6 +90,21 @@ const Search = () => {
             <IonContent fullscreen={true} className='ion-padding'>
                 <IonSearchbar id='search' value={searchQuery} onIonChange={e => doSearch(e.detail.value)} ></IonSearchbar>
                 {results}
+
+                <IonToolbar id='toolbar'>
+                    <IonButton routerLink='/home'>
+                        <IonIcon icon={home}  ></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/search'>
+                        <IonIcon icon={search}  ></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/camera'>
+                        <IonIcon icon={camera}></IonIcon>
+                    </IonButton>
+                    <IonButton>
+                        <IonIcon icon={person}></IonIcon>
+                    </IonButton>
+                </IonToolbar>
             </IonContent>
         </IonPage>
     );

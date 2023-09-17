@@ -23,37 +23,30 @@ const Home: React.FC = () => {
                     <img height="120" src="basket.png" />
                     <h1>Our mission</h1>
                     <p>
-                        With global warming hitting a high rating compared to the past few years, every step of making a change counts.
+                        As global temperatures continue to rise, and climate tensions grow ever higher, we're all trying to figure out how to make a change.
                         <br /><br />
-                        Our mission goes hand-in-hand with environmental sustainability by creating an app designed to implement a decision-based buying shift for consumers towards more sustainable products provided by eco-friendly companies.
+                        In our research, we came to believe that it's our role as consumers that best empowers us to bring that change.
                         <br /><br />
-                        This app recommends or suggests suitable eco-friendly companies to shift consumers' pockets to benefiting the Earth more, making a small step toward a better future.
+                        By staying in the loop about sustainability practices of the companies that surround us, we, as consumers, can choose to defund those who are sabotaging our future.
+                        <br /><br />
+                        We can do our best to put our eggs in the right basket.
                     </p>
-
-                    <h1>Try out Search:</h1>
-
-                    <IonFabButton routerLink='/search'>
-                        <IonIcon icon={search} />
-                    </IonFabButton>
                 </div>
 
-                <div>
-                    <IonHeader>
-                        <IonToolbar>
-                                <IonButton id="homeicon">
-                                    <IonIcon icon={home}  ></IonIcon> <b></b>
-                                </IonButton>
-                                <IonButton id='cameraicon'>
-                                    <IonIcon icon={camera}></IonIcon>
-                                </IonButton>
-                                <IonButton id="personicon">
-                                    <IonIcon icon={person}></IonIcon>
-                                </IonButton>
-                        </IonToolbar>
-                    </IonHeader>
-
-
-                </div>
+                <IonToolbar id='toolbar'>
+                    <IonButton routerLink='/home'>
+                        <IonIcon icon={home}  ></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/search'>
+                        <IonIcon icon={search}  ></IonIcon>
+                    </IonButton>
+                    <IonButton routerLink='/camera'>
+                        <IonIcon icon={camera}></IonIcon>
+                    </IonButton>
+                    <IonButton>
+                        <IonIcon icon={person}></IonIcon>
+                    </IonButton>
+                </IonToolbar>
 
             </IonContent>
         </IonPage>
